@@ -28,16 +28,17 @@ app.post("/",function(req,res){
         ]
     };
     const jsonData = JSON.stringify(data);
-    const url = "https://us12.api.mailchimp.com/3.0/lists/05167e348e";
+    const url = "https://us12.api.mailchimp.com/3.0/lists/";
     const option = {
         method: "POST",
-        auth: "sandy:579a44f2011728f92d39df19680ecd45-us12"
+        auth: "sandy:"
     };
     const request = https.request(url,option,function(response){
         const responseCode = response.statusCode;
         response.on("data",function(data){
             console.log(JSON.parse(data));
         });
+        console.log(responseCode);
         if(responseCode == 200){
             res.sendFile(__dirname+"/success.html");
         } else {
